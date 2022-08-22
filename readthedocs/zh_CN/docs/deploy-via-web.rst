@@ -84,6 +84,7 @@
    - AMOP 通讯 ID (amop_id)
       * 配置说明：此 ID 将作为节点间 AMOP 通讯所需要的Topic来进行监听。AMOP 通讯可在不同机构的节点间通讯, 亦可在同一机构内的不同节点间通讯。
       * 配置要求：建议使用英文, 并确保该 ID 在联盟链中唯一。\ `「什么是 AMOP ?」 <https://fisco-bcos-documentation.readthedocs.io/zh_CN/latest/docs/manual/amop_protocol.html?highlight=amop>`_\
+      * AMOP证书与私钥配置：通过替换weid-build-tools中`resources/conf/amop/`中的私钥consumer_private_key.p12和公钥consumer_public_key.pem文件，还需要修改fisco.properties配置中的p12私钥文件的密码amop.p12-password
 
    - 配置区块链节点 IP 和 Channel 端口
       * 配置说明：填入集成 WeIdentity Java SDK 的service（或者部署 WeIdentity Rest Service），所需连接的区块链节点的内网或公网 IP。Channel 端口为该节点的Channel端口。 \ `「什么是 Channel 端口?」 <https://mp.weixin.qq.com/s/XZ0pXEELaj8kXHo32UFprg>`_\
@@ -95,7 +96,8 @@
 
    - 配置SDK证书
       * 配置说明：连接区块链节点时需要使用的 SDK 证书。
-      * 请从您的FISCO-BCOS节点安装目录获取 SDK 证书文件(非国密包括三个文件：ca.crt, node.crt 和 node.key, 可能正在下面两个目录: ``~/fisco/nodes/127.0.0.1/sdk/`` 或 ``~/fisco/generator/tmp_one_click/agencyA/sdk/``，最新版本的FISCO BCOS链中，sdk证书node.crt/node.key已重命名为sdk.crt/sdk.key，因此只需要将sdk.crt/sdk.key复制或重命名为node.crt/node.key并放置到对应配置目录即可。国密包括五个文件：gmca.crt，gmsdk.crt，gmsdk.key，gmensdk.crt，gmensdk.key，可能正在下面这个目录: ``~/fisco/nodes/127.0.0.1/sdk/gm`` 或 ``~/fisco/generator/tmp_one_click/agencyA/sdk/gm``）。
+      * 请从您的FISCO-BCOS节点安装目录获取 SDK 证书文件(非国密包括三个文件：ca.crt, sdk.crt 和 sdk.key, 可能正在下面两个目录: ``~/fisco/nodes/127.0.0.1/sdk/`` 或 ``~/fisco/generator/tmp_one_click/agencyA/sdk/``。国密包括五个文件：gmca.crt，gmsdk.crt，gmsdk.key，gmensdk.crt，gmensdk.key，可能正在下面这个目录: ``~/fisco/nodes/127.0.0.1/sdk/gm`` 或 ``~/fisco/generator/tmp_one_click/agencyA/sdk/gm``）。
+      * FISCO BCOS 3.0下国密的例子，包含了sm_xx开头的证书。
 
 .. note::
      1. 对证书有疑问，可以参看这篇文章： \ `「区块链中的各种证书详解」 <https://fisco-bcos-documentation.readthedocs.io/zh_CN/latest/docs/manual/certificates.html>`_\
